@@ -33,7 +33,13 @@ module.exports = (req, res, next) => {
         });
       });
     })
-    .then(html => (new ESI()).process(html))
+    .then(html => {
+      const esi = new ESI({
+        onError: (src, error) => `<!-- GET ${src} resulted with ${error} -->`
+      });
+
+      return esi.process(html);
+    })
     .then(html => res.send(html))
     .catch((errs) => {
       next(errs);
