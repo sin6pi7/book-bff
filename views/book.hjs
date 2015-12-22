@@ -1,0 +1,7 @@
+{{<layout}}
+{{$content}}
+    <img src="{{ thumbnail }}" alt="">
+    <div>{{ title }}</div>
+    <div>Count: {{ count }}</div>
+{{/content}}
+{{/layout}}
