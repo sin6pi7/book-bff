@@ -1,9 +1,17 @@
 <html>
-<head></head>
+<head>
+    <style>
+
+    </style>
+</head>
 <body>
-<header>HEADER</header>
+<header>
+    <esi:include src="https://kwasniew.github.io/menu.html" />
+</header>
 {{$content}}
 {{/content}}
-<footer>FOOTER</footer>
+<footer>
+    <esi:include src="https://kwasniew.github.io/footer.html" />
+</footer>
 </body>
 </html>

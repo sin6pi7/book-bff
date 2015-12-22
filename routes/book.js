@@ -5,6 +5,7 @@ const request = require('good-guy-http')({
   json: true
 });
 const jp100 = require('jsonpath');
+const ESI = require('nodesi');
 
 module.exports = (req, res, next) => {
   const isbn = req.params.isbn;
@@ -18,16 +19,23 @@ module.exports = (req, res, next) => {
       const thumbnail = jp100.query(data[0], '$..thumbnail');
       const count = jp100.query(data[1], '$..count');
 
-      res.render('book', {
-        title,
-        thumbnail,
-        count,
-        partials: {
-          layout: 'layout'
-        }
+      return new Promise((resolve, reject) => {
+        req.app.render('book', {
+          title,
+          thumbnail,
+          count,
+          partials: {
+            layout: 'layout'
+          }
+        }, (err, html) => {
+          if (err) reject(err);
+          resolve(html);
+        });
       });
     })
+    .then(html => (new ESI()).process(html))
+    .then(html => res.send(html))
     .catch((errs) => {
       next(errs);
     });
-  };
+};
