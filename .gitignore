@@ -1,5 +1,8 @@
 # node deps
 node_modules
 
+# node log
+npm-debug.log
+
 # IDE
 .idea

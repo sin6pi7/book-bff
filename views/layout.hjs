@@ -1,12 +1,9 @@
 <html>
 <head>
-    <style>
-
-    </style>
 </head>
 <body>
 <header>
-    <esi:include src="https://kwasniew.github.io/menfdsfdsfdsfdsfdsu.html" />
+    <esi:include src="https://kwasniew.github.io/menu.html" />
 </header>
 {{$content}}
 {{/content}}

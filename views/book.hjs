@@ -2,6 +2,6 @@
 {{$content}}
     <img src="{{ thumbnail }}" alt="">
     <div>{{ title }}</div>
-    <div>Count: {{ count }}</div>
+    <esi:include src="https://book-inventory-jm.herokuapp.com/stock/{{isbn}}" />
 {{/content}}
 {{/layout}}
